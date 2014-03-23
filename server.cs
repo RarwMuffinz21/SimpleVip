@@ -16,10 +16,9 @@ function checkVip(%ID)
             %p.isVIP = true;
             %p.clanPrefix = $VIPMOD::VIPtag;
          }
-         return true;
+    
       }
-      else
-         return false;
+
    %file.close();
    %file.delete();
 }
@@ -44,10 +43,10 @@ function VipTagUpdate()
 
 function servercmdSetVipTag(%client, %tag)
 {
-	echo("function called");
+	
 	if(%client.isAdmin)
 	{
-	echo("is admin");
+	
 		if(%tag $= "")
 		{
 		}
@@ -74,14 +73,13 @@ function servercmdaddVip(%client, %ID)
 	}
 	else
 	{
-	echo(%client.bl_id @ " tried to add a vip");
+	
 	}
 }
 function addVip(%ID)
 {
    %ID = mFloor(%ID);
    if(checkVip(%ID))
-      return 0; //If it exists, don't add it again
    %file = new FileObject();
    %file.openForAppend("Config/server/VipList.cs");
    %file.writeLine(" " @ %ID);
@@ -118,15 +116,15 @@ registerInputEvent(fxDTSBrick, onVipFalse, "Self fxDTSBrick" TAB "Player Player"
 
 function fxDTSBrick::checkVip(%this,%client)
 {
-	echo("event Called");
+	
    if(%client.isVip)
    {
-	echo("Return True");
+	
       %this.processInputEvent("onVipTrue", %client); //Call it if it is true
    }
    else
    {
-	echo("return false");
+	
       %this.processInputEvent("onVipFalse", %client);
    }
 }
