@@ -1,0 +1,1 @@
+Simple Vip is a script for blockland that allows you to add and check VIP(s) status.
